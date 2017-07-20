@@ -30,7 +30,17 @@ def gradcheck_naive(f, x):
         # to test cost functions with built in randomness later.
 
         ### YOUR CODE HERE:
-        raise NotImplementedError
+        tmp=x[ix]
+        x[ix]=tmp-h/2
+        random.setstate(rndstate)
+        f1, _=f(x)
+
+        x[ix]=tmp+h/2
+        random.setstate(rndstate)
+        f2, _=f(x)
+
+        numgrad=(f2-f1)/h
+        x[ix]=tmp
         ### END YOUR CODE
 
         # Compare gradients
@@ -69,7 +79,7 @@ def your_sanity_checks():
     """
     print "Running your sanity checks..."
     ### YOUR CODE HERE
-    raise NotImplementedError
+    #raise NotImplementedError
     ### END YOUR CODE
 
 
