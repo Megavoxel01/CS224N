@@ -33,13 +33,13 @@ def softmax(x):
         ### YOUR CODE HERE
         #raise NotImplementedError
         f_max=np.max(x, axis=1, keepdims=True)
-        x=np.exp(x-f_max)/np.sum(np.exp(x), axis=1, keepdims=True)
+        x=np.exp(x-f_max)/np.sum(np.exp(x-f_max), axis=1, keepdims=True)
         ### END YOUR CODE
     else:
         # Vector
         ### YOUR CODE HERE
         f_max=np.max(x)
-        x=np.exp(x-f_max)/np.sum(np.exp(x))
+        x=np.exp(x-f_max)/np.sum(np.exp(x-f_max))
         ### END YOUR CODE
 
     assert x.shape == orig_shape
@@ -75,7 +75,7 @@ def test_softmax_basic():
 def test_softmax():
     """
     Use this space to test your softmax implementation by running:
-        python q1_softmax.pyn
+        python q1_softmax.py
     This function will not be called by the autograder, nor will
     your tests be graded.
     """
