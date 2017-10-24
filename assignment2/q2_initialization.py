@@ -1,5 +1,6 @@
 import numpy as np
-import tensorflow as tf
+#import tensorflow as tf
+import dynet as dy
 
 
 def xavier_weight_init():
@@ -25,6 +26,8 @@ def xavier_weight_init():
             out: tf.Tensor of specified shape sampled from the Xavier distribution.
         """
         ### YOUR CODE HERE
+        m = dy.ParameterCollection()
+        out = m.add_parameters(shape).as_array()
         ### END YOUR CODE
         return out
     # Returns defined initializer function.
